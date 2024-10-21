@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
+import { CiBookmarkCheck } from "react-icons/ci";
 
-const Blog = ({blog}) => {
-    const {title, cover, author, author_img, posted_date, reading_time, hashtags} = blog;
+const Blog = ({ blog, handleAddToBookMark }) => {
+    const { title, cover, author, author_img, posted_date, reading_time, hashtags } = blog;
     return (
-        <div>
-            <img src={cover} alt={`Cover of ${title}`} />
-            <div className='flex justify-between'>
+        <div className='mb-20'>
+            <img className='w-full mb-8' src={cover} alt={`Cover of ${title}`} />
+            <div className='flex justify-between mb-4'>
                 <div className='flex gap-6'>
                     <img className='w-14' src={author_img} alt="" />
                     <div>
@@ -15,6 +16,8 @@ const Blog = ({blog}) => {
                 </div>
                 <div>
                     <span>{reading_time} min read</span>
+                    <button onClick={handleAddToBookMark}
+                        className='ml-2 text-red-600 text-2xl'><CiBookmarkCheck></CiBookmarkCheck></button>
                 </div>
             </div>
             <h2 className="text-4xl">{title}</h2>
